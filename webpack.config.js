@@ -1,18 +1,24 @@
+var path = require('path');
+
 module.exports = {
-  entry: './index',
+  entry: './src/index.js',
   output: {
+    path: path.resolve(__dirname, 'dist'),
     filename: 'browser-bundle.js'
   },
   devtool: 'source-map',
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['es2015', 'react']
+        exclude: /(node_modules)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['env', 'react']
+          }
         }
-      },
+      }
     ]
   }
 };
