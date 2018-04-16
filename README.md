@@ -1,10 +1,13 @@
-# react-webpack-template
+# Редактор маршрутов
 
-This is a simple template for building React apps. Use this to get started, and if you find yourself needing additional features, see my [webpack-howto](https://github.com/petehunt/webpack-howto).
+Необходимо реализовать редактор маршрутов — одностраничное приложение, в
+котором пользователь в интерактивном режиме может создавать на карте
+маршрут, указывая начальную, конечную и промежуточные точки движения. Для
+каждой точки маршрута можно посмотреть ее адрес.
 
-## How to use this
 
-  * Clone the repo: `git clone https://github.com/petehunt/react-webpack-template my-new-project`
-  * Install the dependencies: `cd my-new-project && npm install`
-  * Start webpack: `npm start`
-  * Add your code to `index.js` and open `index.html`
+## Приложение визуально состоит из:
+
+* текстового поля ввода для новых точек маршрута;
+* списка уже введенных точек маршрута;
+* интерактивной карты.
