@@ -1,4 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-ReactDOM.render(<h1>Hello React, Babel & Webpack!</h1>, document.getElementById('root'));
+class HelloMessage extends React.Component {
+
+  any = {
+    // это экспериментальный синтаксис, чтобы его использовать нужно установить "babel-preset-stage-0": "^6.24.1" или выше
+    a: 4
+  }
+
+  render() {
+    return (
+      <div>
+        Hello {this.props.name}
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <HelloMessage name="Taylor" />,
+  document.getElementById('root')
+);
