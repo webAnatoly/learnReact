@@ -7,6 +7,57 @@
   <title>Document</title>
 </head>
 <body>
-  <div id="root">If you see this then something is wrong.</div>
+  <div id="root">for react</div>
+
+  <!-- without react pure html and js -->
+  <h2>Pure HTML below</h2>
+  <input id="inputText" type="text" autofocus onkeydown="setTimeout(myHandleChange, 0, this)">
+  <span id="mess"></span>
+  <br><br><p>Form in pure HTML</p>
+    <form name="myForm">
+      <label>
+        Name:
+        <input type="text" name="inputName" />
+      </label>
+      <input type="submit" value="Submit" />
+      <br><br>
+      <textarea rows="10" cols="30" name="myTextArea">
+      </textarea>
+      <br>
+      <select name="mySelect">
+        <option value="grapefruit">Grapefruit</option>
+        <option value="lime">Lime</option>
+        <option selected value="coconut">Coconut</option>
+        <option value="mango">Mango</option>
+      </select>
+      <br>
+      <p>Multiple select</p>
+      <select name="secondSelect" multiple style="width:250px">
+        <option value="one">One</option>
+        <option value="two">Two</option>
+        <option value="three">Three</option>
+      </select>
+    </form>
+
+
+  <script>
+    let div = document.getElementById('mess');
+    let myInput = document.getElementById('inputText');
+
+    function myHandleChange(elem) {
+      div.innerHTML = elem.value;
+    }
+
+    document.forms.myForm.addEventListener('submit', function(event){
+      event.preventDefault();
+      let name = event.target.elements.inputName.value; 
+      let text = event.target.elements.myTextArea.value;
+      let select = event.target.elements.mySelect.value;
+      let result = {name: name, text: text, select: select};
+      let resultJSON = JSON.stringify(result);
+      console.log(resultJSON);
+    });
+    
+  </script>
 </body>
 </html>
