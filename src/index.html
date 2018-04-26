@@ -14,7 +14,7 @@
   <input id="inputText" type="text" autofocus onkeydown="setTimeout(myHandleChange, 0, this)">
   <span id="mess"></span>
   <br><br><p>Form in pure HTML</p>
-    <form name="myForm">
+    <form name="myForm" style="margin-bottom:200px">
       <label>
         Name:
         <input type="text" name="inputName" />
@@ -37,6 +37,9 @@
         <option value="two">Two</option>
         <option value="three">Three</option>
       </select>
+      Select file:
+      <input multiple type="file" id="file_1" name="myFile" multiple style="display:none">
+      <label for="file_1" style="width:100px; height:50px; background-color: rgb(230, 250, 198); border-radius:2px">Select some files</label>
     </form>
 
 
@@ -55,9 +58,17 @@
       let select = event.target.elements.mySelect.value;
       let result = {name: name, text: text, select: select};
       let resultJSON = JSON.stringify(result);
-      console.log(resultJSON);
+      console.log('--', resultJSON);
     });
-    
+
+    let selectedFiles = document.getElementById('file_1');
+    let fileSelect = document.getElementById('fileElem');
+  
+    selectedFiles.addEventListener('change', (event) => {
+      let files = event.target.files;
+      console.log(files);
+    });
+
   </script>
 </body>
 </html>

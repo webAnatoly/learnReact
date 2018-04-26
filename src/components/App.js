@@ -4,29 +4,26 @@ import ReactDOM from 'react-dom';
 import Clock from './Clock';
 import Toggle from './Toggle';
 import NameForm from './NameForm';
+import Calculator from './Calculator';
+
+let path = 'https://gist.githubusercontent.com/webAnatoly/8c826fc11c3e13788cff6ccb0ebc2d5d/raw/f3c45ee451a06c1cabcc78a8ef1a3d6d472dbd1c/test.json';
+let result = '';
+async function getJSON2() {
+  // получить json с сервера
+  let response = await fetch(path);
+  if (response.ok) {
+    let jsonAsObj = await response.json();
+    console.log('test async: ', jsonAsObj);
+    result = jsonAsObj;
+  }
+}
+getJSON2();
+console.log('test sync: ', result);
 
 export default class App extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      time: { h: '00', m: '00', s: '00' },
-      any: 'any string'
-    }
-  }
-
-  tickForClock() {
-    const curDate = new Date();
-    const h = curDate.getHours();
-    const m = curDate.getMinutes();
-    const s = curDate.getSeconds();
-    this.setState({
-      time: {
-        h: h < 10 ? `0${h}` : h,
-        m: m < 10 ? `0${m}` : m,
-        s: s < 10 ? `0${s}` : s
-      }
-    })
   }
 
   render() {
@@ -34,22 +31,15 @@ export default class App extends React.Component {
     const doubled = numbers.map((number, index) => <li key={index}>{number}</li>);
     return (
       <div style={{marginLeft:"100px"}}>
-        <div><Clock globalState={this.state} tick={this.tickForClock.bind(this)} /></div>
-        <div><Clock globalState={this.state} tick={this.tickForClock.bind(this)} /></div>
+        <Clock />
+        <Clock />
         <Toggle/>
         <ul>{doubled}</ul>
         <br/>
         <NameForm/>
         <br/>
+        <Calculator/>
       </div>
     )
-  }
-
-  componentDidMount() {
-    this.intervalID = setInterval(() => { this.tickForClock() }, 1000);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.timerID);
   }
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import FileInput from './FileInput';
 
 export default class NameForm extends React.Component {
   constructor(props) {
@@ -37,6 +38,7 @@ export default class NameForm extends React.Component {
     // alert(`Entered value was submitted: ${this.state.value}` );
     const result = JSON.stringify(this.state); // result можно отправлять на сервер
     console.log(result);
+    console.log('fileInput from NameForms.js', this.fileInput);
     event.preventDefault();  
   }
 
@@ -82,7 +84,17 @@ export default class NameForm extends React.Component {
           <option value="four">Four</option>
           <option value="five">Five</option>
         </select>
+        <br/><br/><br/>
+        <FileInput />
       </form>
     )
+  }
+
+  componentDidMount() {
+    // console.log('mount')
+  }
+
+  componentDidUpdate() {
+    // console.log('update');
   }
 }
