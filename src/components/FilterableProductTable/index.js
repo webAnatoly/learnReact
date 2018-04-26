@@ -1,6 +1,6 @@
 import React from 'react';
 import getJSON from '../../getJSON';
-import s from './style.css';
+import style from './style.css';
 
 export default class FilterableProductTable extends React.Component {
   constructor(props) {
@@ -22,7 +22,7 @@ export default class FilterableProductTable extends React.Component {
 
   render() {
     return(
-      <div className={"mainTable"}>
+      <div className={style.mainTable}>
         For future table 
         <button onClick={this.handleClick.bind(this)}>test</button>
       </div>
