@@ -1,5 +1,9 @@
-.mainTable {
-  width: 100px;
+.main {
+  width: 270px;
   min-height: 300px;
   border: 1px solid orange;
+  position: fixed;
+  left: 450px;
+  background-color: oldlace;
+  padding: 5px;
 }
